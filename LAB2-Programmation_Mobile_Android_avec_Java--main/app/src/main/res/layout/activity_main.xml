@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!--
+        ScrollView : conteneur scrollable (si le contenu dépasse l'écran)
+        Il ne peut contenir QU'UN SEUL enfant direct → le LinearLayout
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--           TITRE DE L'APPLICATION        -->
+        <!-- ═══════════════════════════════════════ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcul des impôts locaux"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--           CHAMP : NOM                   -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <!--
+            TextView = label (étiquette) au-dessus du champ
+        -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"/>
+
+        <!--
+            EditText = champ de saisie
+            inputType="text" → clavier texte normal
+        -->
+        <EditText
+            android:id="@+id/editNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Entrez votre nom"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--           CHAMP : ADRESSE               -->
+        <!-- ═══════════════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adresse"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/editAdresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Entrez votre adresse"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--           CHAMP : SURFACE               -->
+        <!-- ═══════════════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Surface (m²)"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"/>
+
+        <!--
+            inputType="numberDecimal" → clavier numérique avec virgule
+            Parfait pour les surfaces (ex: 120.5)
+        -->
+        <EditText
+            android:id="@+id/editSurface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Ex: 120"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--       CHAMP : NOMBRE DE PIÈCES          -->
+        <!-- ═══════════════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de pièces"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"/>
+
+        <!--
+            inputType="number" → clavier numérique entier uniquement
+        -->
+        <EditText
+            android:id="@+id/editPieces"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Ex: 4"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--     LIGNE : CHECKBOX PISCINE + BOUTON   -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <!--
+            LinearLayout horizontal → place la checkbox et le bouton
+            côte à côte sur la même ligne
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <!--
+                CheckBox = case à cocher
+                isChecked() en Java → retourne true/false
+            -->
+            <CheckBox
+                android:id="@+id/checkPiscine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Piscine"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btnCalcul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calcul"/>
+
+        </LinearLayout>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--        ZONE DE RÉSULTATS                -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <!--
+            Les 3 TextViews de résultats
+            Invisibles au départ (visibility="gone")
+            On les rendra visibles après le calcul en Java
+        -->
+        <TextView
+            android:id="@+id/textImpotBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/textImpotSupp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/textImpotTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</ScrollView>
